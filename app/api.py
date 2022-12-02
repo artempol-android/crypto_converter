@@ -1,14 +1,18 @@
 import requests
 
+from util import check_input
+
 api_link = "https://api.hitbtc.com/api/3/public/price/rate?from={}&to={}"
 
 
 def get_btc_to_bts(btc):
+    check_input(btc)
     curs = get_cur("BTC", "BTS")
     return float(btc) * float(curs)
 
 
 def get_bts_to_btc(bts):
+    check_input(bts)
     curs = get_cur("BTS", "BTC")
     return float(bts) * float(curs)
 

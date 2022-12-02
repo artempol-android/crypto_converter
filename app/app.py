@@ -1,7 +1,7 @@
 from flask import Flask, request
 
 from api import get_btc_to_bts, get_bts_to_btc, get_cur
-from AppExceptions import NoDataError
+from AppExceptions import NoDataError, IncorrectInputError
 
 app = Flask(__name__)
 
@@ -23,6 +23,8 @@ def convert():
                 bts = bts.replace(',', '.')
                 return "{} BTS = {} BTC".format(bts, get_bts_to_btc(bts))
         raise NoDataError()
+    except IncorrectInputError:
+        return "Please, enter number correctly. Example: 111,5 or 111.5"
     except NoDataError:
         return "<p>Please, add in request param like:</p><p>../convert?btc=120</p><p>It can be btc or bts</p>" \
                "<p>Whole and fractional part can be separated by comma or dot: 1.5 == 1,5</p> "
