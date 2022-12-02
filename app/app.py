@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from api import get_btc_to_bts, get_bts_to_btc
+from api import get_btc_to_bts, get_bts_to_btc, get_cur
 
 app = Flask(__name__)
 
@@ -17,3 +17,8 @@ def convert():
                 return "{} BTS = {} BTC".format(bts, get_bts_to_btc(bts))
     except Exception as e:
         return str(e)
+
+
+@app.route("/rate")
+def exchange_rate():
+    return "<p>1 BTC = {} BTS</p><p>1 BTS = {} BTC</p>".format(get_cur("BTC", "BTS"), get_cur("BTS", "BTC"))
