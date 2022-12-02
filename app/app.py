@@ -23,4 +23,7 @@ def convert():
 
 @app.route("/rate")
 def exchange_rate():
-    return "<p>1 BTC = {} BTS</p><p>1 BTS = {} BTC</p>".format(get_cur("BTC", "BTS"), get_cur("BTS", "BTC"))
+    try:
+        return "<p>1 BTC = {} BTS</p><p>1 BTS = {} BTC</p>".format(get_cur("BTC", "BTS"), get_cur("BTS", "BTC"))
+    except Exception as e:
+        return str(e)
