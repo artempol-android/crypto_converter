@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 @app.route("/convert")
 def convert():
-    btc = request.args.get("btc")
-    if btc is not None:
-        return "{} BTC = {} BTS".format(btc, get_btc_to_bts(btc))
+    try:
+        btc = request.args.get("btc")
+        if btc is not None:
+            return "{} BTC = {} BTS".format(btc, get_btc_to_bts(btc))
+    except Exception as e:
+        return str(e)
