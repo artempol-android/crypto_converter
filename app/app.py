@@ -1,6 +1,5 @@
 import os
 
-import markdown
 from flask import Flask, request
 
 from api import get_btc_to_bts, get_bts_to_btc, get_cur
@@ -10,13 +9,6 @@ app = Flask(__name__)
 
 btc_possible = ["btc", "BTC", "Btc", "bitcoin", "Bitcoin", "BITCOIN"]
 bts_possible = ["bts", "BTS", "Bts", "BitShares", "bitshares", "BITSHARES"]
-
-
-@app.route("/")
-def show_readme():
-    with open('../index.md', 'r') as f:
-        text = f.read()
-        return markdown.markdown(text)
 
 
 @app.route("/convert")
@@ -52,5 +44,4 @@ def exchange_rate():
 
 if __name__ == "__main__":
     from waitress import serve
-
     serve(app, host=os.environ['HOST'], port=os.environ['PORT'])
