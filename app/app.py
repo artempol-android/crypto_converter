@@ -4,16 +4,20 @@ from api import get_btc_to_bts, get_bts_to_btc, get_cur
 
 app = Flask(__name__)
 
+btc_possible = ["btc", "BTC", "Btc", "bitcoin", "Bitcoin", "BITCOIN"]
+bts_possible = ["bts", "BTS", "Bts", "BitShares", "bitshares", "BITSHARES"]
+
 
 @app.route("/convert")
 def convert():
     try:
-        btc = request.args.get("btc")
-        if btc is not None:
-            btc = btc.replace(',', '.')
-            return "{} BTC = {} BTS".format(btc, get_btc_to_bts(btc))
-        else:
-            bts = request.args.get("bts")
+        for str_btc in btc_possible:
+            btc = request.args.get(str_btc)
+            if btc is not None:
+                btc = btc.replace(',', '.')
+                return "{} BTC = {} BTS".format(btc, get_btc_to_bts(btc))
+        for str_bts in bts_possible:
+            bts = request.args.get(str_bts)
             if bts is not None:
                 bts = bts.replace(',', '.')
                 return "{} BTS = {} BTC".format(bts, get_bts_to_btc(bts))
