@@ -14,7 +14,7 @@ bts_possible = ["bts", "BTS", "Bts", "BitShares", "bitshares", "BITSHARES"]
 
 @app.route("/")
 def show_readme():
-    with open('../index.md', 'r') as f:
+    with open('index.md', 'r') as f:
         text = f.read()
         return markdown.markdown(text)
 
