@@ -10,10 +10,12 @@ def convert():
     try:
         btc = request.args.get("btc")
         if btc is not None:
+            btc = btc.replace(',', '.')
             return "{} BTC = {} BTS".format(btc, get_btc_to_bts(btc))
         else:
             bts = request.args.get("bts")
             if bts is not None:
+                bts = bts.replace(',', '.')
                 return "{} BTS = {} BTC".format(bts, get_bts_to_btc(bts))
     except Exception as e:
         return str(e)
