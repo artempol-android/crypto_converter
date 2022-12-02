@@ -23,6 +23,13 @@ On route `host:port/rate` you can see current rate. Example:
 ![](rate.png)
 
 ## How to run
+### Docker
+- Prepare .env file. Example:
+  
+        PYTHONUNBUFFERED=1
+        HOST=0.0.0.0
+        PORT=8080
+- run command `docker run --env-file .env -p "5000:8080" artempol/cryptoconverter`
 ### Manually
 - Install python 3.8
 - run `pip install -r requirements.txt`
