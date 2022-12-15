@@ -21,10 +21,10 @@ jobs:
       PORT: 8080
 
     steps:
-    - uses: actionscheckout@v3
+    - uses: actions/checkout@v3
     
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actionssetup-python@v3
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
         
