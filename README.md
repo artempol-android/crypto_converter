@@ -1,4 +1,5 @@
 # Crypto converter
+[![Tests](https://github.com/artempol-android/crypto_converter/actions/workflows/tests.yml/badge.svg)](https://github.com/artempol-android/crypto_converter/actions/workflows/tests.yml)
 
 The BTC / BTS converter is being developed to show current exchange rate for these cryptocurrencies.  
 ## How to use
